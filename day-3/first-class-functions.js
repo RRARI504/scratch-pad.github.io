@@ -10,45 +10,88 @@
  * Given an input base to test against, which could be a String or Number, 
  * return a Function that tests whether a given value is greater than the 
  * base.
+ I: The input is a base which could be a string or a number 
+ O: The output should be a boolean that shows if the test value is greater than the base. 
+ C:
+ E:
+ 
  */
-function createGreaterThanFilter(base) {
+ function createGreaterThanFilter(base) { //function that takes a base to be tested
     // YOUR CODE BELOW HERE //
+  return function(value){ 
+    //the outer function is returning another function that test if the value passed is greater than the base value. Value parameter is a string or a number. 
+    var baseVal = Number(base) 
+    //the parameter base from the first function is converted to a number for numeric based comparison  
+    var testVal = Number(value)
+    //the parameter value from the inner function is concerted to a number for numeric based comparison 
     
-   
+    return baseVal > testVal
+    //here the comparison for the two variables is performed
+ };
+  
+    
+  }
+ 
+let testNumber = createGreaterThanFilter(10) 
+//a variable is made and the outer function is called with a value of 10 
+console.log(testNumber(15)) 
+//the test variable is called with 
     
     // YOUR CODE ABOVE HERE //
-}
+
+/** 
 
 /** 
  * Given an input base to test against, which could be a String or Number, 
  * return a Function that tests whether a given value is less than the 
  * base. (test means return true or false)
  * 
+ I: The input is a base to test against
+ O: The output should be a boolean of true or false if the base is less than the test value
+ C:
+ E:
  */
-function createLessThanFilter(base) {
+ function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-  
-    
+    return function (value){
+      var baseValue = Number(base)
+      var testValue = Number(value)
+      
+      return  baseValue > testValue
+    };
     
     // YOUR CODE ABOVE HERE //
 }
+ let testNumberTwo = createLessThanFilter(15)
+console.log(testNumberTwo(10))
 
+
+/** 
 /** 
  * Given a startsWith character, which will be a single character, return a 
  * Function that tests whether a given String starts with the startsWith 
  * character.
  * 
  * This function needs to be case insensitive.
+ I: The input should be a function 
+ O: The output should be a boolean value based off of the character starting with the actual startsWith value
+ C: Should be case sensitive.
+ E:
+ 
  */
-function createStartsWithFilter(startsWith) {
+ function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+  return function(test){
+    return test.startsWith(startsWith)
+  
+  }
+     
     // YOUR CODE ABOVE HERE //
 }
+let whatsStart = createStartsWithFilter('R')
+console.log(whatsStart('Ryan'))
+console.log(whatsStart('Raymond'))
+console.log(whatsStart('Ashlee'))
 
 /** 
  * Given a endsWith character, which will be a single character, return a 
@@ -56,15 +99,26 @@ function createStartsWithFilter(startsWith) {
  * character.
  * 
  * This function needs to be case insensitive.
+ I: The input should be a function 
+ O: The output should be a boolean value based of the character ending with the actual endsWith value
+ C: Should be case sensitive 
+ E:
  */
-function createEndsWithFilter(endsWith) {
+ function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+  return function(test){
+    return test.endsWith(endsWith)
+  
+  }
+     
     // YOUR CODE ABOVE HERE //
 }
+let whatsEnd = createEndsWithFilter('n')
+console.log(whatsStart('Ryan'))
+console.log(whatsStart('Raymon'))
+console.log(whatsStart('Ashlee'))
+
+
 
 /** 
  * Given an Array of Strings and a Function designed to modify a String, 
@@ -72,15 +126,37 @@ function createEndsWithFilter(endsWith) {
  * 
  * TIP: You need to loop over the Strings, right? We need to pass each String to 
  * the modify Function, but we need to collect the results into some collection.
+ I: The input should be an array of strings
+ O: The output should an  array of strings based off of the modified function 
+ C:
+ E:
  */
-function modifyStrings(strings, modify) {
-    // YOUR CODE BELOW HERE //
+ function modifyStrings(strings, modify) { 
+    //function that takes a parameter string and a function called. modify
+      // YOUR CODE BELOW HERE //
+    var modifiedStrings = []; 
+    //created a container array for modified values to go to 
     
-    
-    
-    
-    // YOUR CODE ABOVE HERE //
-}
+    for(var i = 0; i < strings.length; i++) {
+      //loops over each string within the array
+      modifiedStrings.push(modify(strings[i]))
+    // appllies the modify fucntion to the current string parameter and pushes the values to the modifiedStrings array
+      // YOUR CODE ABOVE HERE //
+    }
+  
+      return modifiedStrings; //return the modified strings in an array
+  
+  }
+  
+  function toLowerCase(str){ //function to change string values to lowercase
+    return str.toLowerCase(); 
+  }
+  
+  var stringArr = ['RYAN', "SIMIEN", "IVORY"] //array with actual string values
+  
+  let lowerCased = modifyStrings(stringArr, toLowerCase)
+  // modifying the outter array to lower case all strings in the container array
+  console.log(lowerCased);
 
 
 
@@ -93,15 +169,30 @@ function modifyStrings(strings, modify) {
  * begin with "C", or they are all exclaimations that end with "!".
  * 
  * TIP: You need to loop over the Strings, right? And pass them to the test?
+ I: The inputs here is a funciton and an array of strings. 
+ O: The output is a boolean value that says if all strings within the array pass the test
+ C: 
+ E:
+ 
  */
-function allStringsPass(strings, test) {
-    // YOUR CODE BELOW HERE //
+ function allStringsPass(strings, test) {
+    //function that takes a function and an array of strings
+      // YOUR CODE BELOW HERE // 
+    return strings.every(test)
+    //.every method iterates over array and checks if they all are true   
+      // YOUR CODE ABOVE HERE //
+  }
+  
+  function endsWithN(letter){ //test function that sees if array values end with n
+      return letter.endsWith("n");
     
-    
-    
-    
-    // YOUR CODE ABOVE HERE //
-}
+    }
+  var arrayNames = ['Ryan', 'Sarah', 'Jocelyn']; 
+  //variable made with actual string values
+  let answer = allStringsPass(arrayNames, endsWithN);
+  //variable that checks if all names in made array end with the letter n
+  console.log(answer);
+  
 
 
 

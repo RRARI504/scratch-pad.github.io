@@ -34,29 +34,77 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) {
-    
+function makeContact(id, nameFirst, nameLast) { //factory function that creates contacts w/ three parameters
+    return { //returns a contact object with given key value pairs 
+      id: id,
+      nameFirst: nameFirst,
+      nameLast: nameLast 
+    };
 } 
 
 
 
-function makeContactList() {
+function makeContactList() { //a factory function for the actual contact list
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts = [];
+    var contacts = []; //contacts variable that holds the actually contact values to be made
     
-    return {
+    return { //returns an object that manages the contacts list with the following methods
         // we implemented the length api for you //
-       
-    }
+              length: function(){ 
+                //a length method that is another function that manages the contacts in the array 
+                return contacts.length;
+                //returns the contacts array length 
+              },       
+      
+              addContact: function(contact){ 
+                //addContact method that is a fucntion that takes a contact object to be added to the contact list 
+                return contacts.push(contact)
+                //returns the contact and pushes it to the array container
+               },
+      
+              findContact: function(fullName){
+                //findContact method that takes a full name string 
+                 var [firstName, lastName] = fullName.split(' ');
+                //variable that takes the full name and spilts it to first and last names
+                return contacts.find(contact => contact.nameFirst === firstName && contact.nameLast === lastName);
+                // return statement uses find method on contacts array and serches for contact object values in the array that matches first and last names
+                     
+                },
+              
+                removeContact: function(contact){
+                  //removeContact method that is a function that takes contact array
+                  contact.delete(contact.id);
+                  //uses .delete to remove a key value pair associated with the given key from the contact array object 
+                },
+                 
+                printAllContactNames: function(){
+                  
+                  var lineBreak = contacts.map(contact =>  
+                    //variable linebreak that maps over all contacts to make an array full of names
+                    `${contact.nameFirst} ${contact.nameLast}`);
+                  return lineBreak.join('\n');
+                  //joins the name array using .join with a new line character and doesnt trail the new line at the end
+                }
+                
+              
+    };
 }
+var contactNumOne = makeContact(1, "Ryan", "Simien");
+//var contactNumTwo = makeContact(2, "Edie", "Weath");
 
-makeContactList(); // => { length: function(){}, addContact: function(){}, findContact: function(){}  }
+var myContacts = makeContactList();
+
+myContacts.addContact(contactNumOne);
+//myContacts.addContact(contactNumTwo);
+
+console.log(myContacts.printAllContactNames()); // => { length: function(){}, addContact: function(){}, findContact: function(){}  }
 
 
 
 // YOUR CODE GOES ABOVE HERE //
+
 
 
 

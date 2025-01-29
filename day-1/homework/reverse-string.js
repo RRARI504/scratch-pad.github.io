@@ -2,8 +2,8 @@
 
 'use strict';
 
-/**
- * 1: reverseString()
+/*
+1: reverseString()
  *
  *  a. Create a function called reverseString that takes a 
  *  String as its only input and returns a new String 
@@ -17,18 +17,36 @@
  *     when to stop looping?
  *  c. how do you access individual characters of a String?
  *  d. how do you concatenate Strings? What operator do we use?
+ * 
+ * I: A string is its only input 
+ * O: Returns a string of the input reversed 
+ * C:
+ * E:
  */
 
 function reverseString(input) {
-    // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
-    // YOUR CODE GOES ABOVE HERE //
+  // YOUR CODE GOES BELOW HERE //
+  var reverse = ''; 
+  for(var i = input.length - 1; i >= 0; i-- ){
+    reverse += input[i];
+   
+  }
+return reverse; 
+
+  // YOUR CODE GOES ABOVE HERE //
 }
 
+console.log(reverseString("Whatsup"));
 
+
+
+
+
+
+
+/*
+
+console.log(reverseString("Whatsup"));
 
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
@@ -39,3 +57,4 @@ if (
   // here, export any references you need for tests //
   module.exports.reverseString = reverseString;
 }
+*/
