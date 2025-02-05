@@ -90,13 +90,14 @@ console.log(testNumberTwo(10))
  function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
   return function(test){
-    return test.startsWith(startsWith)
+    return test.toLowerCase().startsWith(startsWith.toLowerCase());
+
   
   }
      
     // YOUR CODE ABOVE HERE //
 }
-let whatsStart = createStartsWithFilter('R')
+let whatsStart = createStartsWithFilter("R")
 console.log(whatsStart('Ryan'))
 console.log(whatsStart('Raymond'))
 console.log(whatsStart('Ashlee'))
@@ -115,7 +116,7 @@ console.log(whatsStart('Ashlee'))
  function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
   return function(test){
-    return test.endsWith(endsWith)
+    return test.toLowerCase().endsWith(endsWith.toLowerCase());
   
   }
      
