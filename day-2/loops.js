@@ -123,7 +123,7 @@ let objPersValues = {
   Talent: "Coding"
 };
 
-var objValues = getObjectValues(objPersonality);
+var objValues = getObjectValues(objPersValues);
 console.log(objValues);
 
 
@@ -137,7 +137,7 @@ console.log(objValues);
  
  */
 
- function getObjectValues(object) {
+ function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
   for(var key in object)
     console.log(object[key])
