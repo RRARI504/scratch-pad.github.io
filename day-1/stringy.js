@@ -156,9 +156,10 @@ E:
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-  return stringOne + " " + stringTwo
+  return stringOne + "" + stringTwo
     // YOUR CODE ABOVE HERE //
 }
+
 console.log(concat("Ryan", "Sim"));
 
 /**
@@ -204,7 +205,7 @@ E:
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-  if(stringOne.length > stringTwo.lenght){
+  if(stringOne.length > stringTwo.length){
    return stringOne;
     
   } else{
