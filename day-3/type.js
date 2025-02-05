@@ -74,20 +74,20 @@ console.log(isArray("Ryan"));
  function isCollection(value) {
     // YOUR CODE BELOW HERE //
     if(Array.isArray(value)){ //checks if the value is an array and returns true
-      return "true";
+      return true;
     }
  
    if( typeof value === 'object' && value !== null && !Array.isArray(value) && !(value instanceof Date)){
-     return "true";
+     return true;
     //checks if value is an object. && checks if value isnt null and not an array and if value is not an isnatnce of Date
     // YOUR CODE ABOVE HERE //
   }
-  return 'false';
+  return false;
   //if not an array or an object return false
 
 }
 
-console.log(isCollection("hey")); //calls the function and give it an array for the value
+console.log(isCollection(["hey", "bye"])); //calls the function and give it an array for the value
 
 /**
  * Given an input value, return the type of the value as a String

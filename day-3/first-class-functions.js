@@ -17,17 +17,20 @@
  
  */
  function createGreaterThanFilter(base) { //function that takes a base to be tested
-    // YOUR CODE BELOW HERE //
-  return function(value){ 
-    //the outer function is returning another function that test if the value passed is greater than the base value. Value parameter is a string or a number. 
-    var baseVal = Number(base) 
-    //the parameter base from the first function is converted to a number for numeric based comparison  
-    var testVal = Number(value)
-    //the parameter value from the inner function is concerted to a number for numeric based comparison 
-    
-    return baseVal > testVal
-    //here the comparison for the two variables is performed
- };
+  // YOUR CODE BELOW HERE //
+return function(value){ 
+  // If the base is a number and the value is also a number, compare numerically
+  if (typeof base === "number" && typeof value === "number") {
+    return value > base;
+  }
+  // If the base is a string and the value is also a string, compare 
+  if (typeof base === "string" && typeof value === "string") {
+    return value > base;
+  }
+
+  return base;//if base and value dont match return false
+}
+
   
     
   }
@@ -35,7 +38,7 @@
 let testNumber = createGreaterThanFilter(10) 
 //a variable is made and the outer function is called with a value of 10 
 console.log(testNumber(15)) 
-//the test variable is called with 
+//the test variable is called with the number 15 
     
     // YOUR CODE ABOVE HERE //
 
@@ -54,11 +57,16 @@ console.log(testNumber(15))
  function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     return function (value){
-      var baseValue = Number(base)
-      var testValue = Number(value)
+      if (typeof base === "number" && typeof value === "number") {
+        return value < base;
+      }
       
-      return  baseValue > testValue
-    };
+      if (typeof base === "string" && typeof value === "string") {
+        return value < base;
+      }
+    
+      return value;//if base and value dont match return false
+    }
     
     // YOUR CODE ABOVE HERE //
 }
