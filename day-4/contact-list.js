@@ -42,8 +42,6 @@ function makeContact(id, nameFirst, nameLast) { //factory function that creates 
     };
 } 
 
-
-
 function makeContactList() { //a factory function for the actual contact list
     /*
      * You need something here to hold contacts. See length api for a hint:
@@ -75,7 +73,10 @@ function makeContactList() { //a factory function for the actual contact list
               
                 removeContact: function(contact){
                   //removeContact method that is a function that takes contact array
-                  contact.delete(contact.id);
+                  if(contact.hasOwnProperty(key)){
+                    delete contact[key];
+
+                  }
                   //uses .delete to remove a key value pair associated with the given key from the contact array object 
                 },
                  
