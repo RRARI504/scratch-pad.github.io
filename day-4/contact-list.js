@@ -70,14 +70,21 @@ function makeContactList() { //a factory function for the actual contact list
                 // return statement uses find method on contacts array and serches for contact object values in the array that matches first and last names
                      
                 },
+
+
+
               
                 removeContact: function(contact){
                   //removeContact method that is a function that takes contact array
-                  if(contact.hasOwnProperty(key)){
-                    delete contact[key];
+                  var index = contacts.indexOf(contact);
+
+                  if(index !== -1){
+                    contacts.splice(index, 1);
 
                   }
-                  //uses .delete to remove a key value pair associated with the given key from the contact array object 
+
+                  
+
                 },
                  
                 printAllContactNames: function(){
